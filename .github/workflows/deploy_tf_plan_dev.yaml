@@ -39,5 +39,5 @@ jobs:
         run: terraform plan
       - name: Terraform Apply
         id: apply
-        if: steps.plan.outcome == "success"
+        if: steps.plan.outcome == 'success'
         run: terraform apply -auto-approve
