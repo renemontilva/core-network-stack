@@ -1,9 +1,10 @@
 <!-- BEGIN_TF_DOCS -->
-# Header
+# Header(Core network stack)
 
 # Example
 
 ```hcl
+# Comment
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.16.0"
@@ -33,7 +34,6 @@ No providers.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_AWS_SESSION_TOKEN"></a> [AWS\_SESSION\_TOKEN](#input\_AWS\_SESSION\_TOKEN) | (optional) describe your variable | `string` | n/a | yes |
 | <a name="input_azs"></a> [azs](#input\_azs) | Availability Zones | `list(string)` | n/a | yes |
 | <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | Ip address block for vpc | `string` | n/a | yes |
 | <a name="input_enable_dns_hostnames"></a> [enable\_dns\_hostnames](#input\_enable\_dns\_hostnames) | (optional) describe your variable | `bool` | `true` | no |
