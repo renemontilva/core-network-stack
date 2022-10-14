@@ -1,0 +1,43 @@
+name: "TF CI/CD Deploy Plan on Dev"
+on:
+  workflow_dispatch:
+    branches:
+      - "main"
+    paths:
+      - "dev/**"
+      - "!dev/**"
+  push:
+    branches:
+      - "main"
+    paths:
+      - "dev/**"
+      - "!dev/**"
+jobs:
+  deploy_plan:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan
+      - name: Terraform Apply
+        id: apply
+        if: steps.plan.outcome == "success"
+        run: terraform apply -auto-approve

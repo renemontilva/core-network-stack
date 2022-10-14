@@ -1,0 +1,17 @@
+terraform {
+  cloud {
+    organization = "platform-stack"
+    workspaces {
+      name = "platform-prod"
+
+    }
+  }
+  required_version = ">= 1.2.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.30.0"
+    }
+  }
+}
