@@ -5,13 +5,13 @@ on:
       - "main"
     paths:
       - "dev/**"
-      - "!dev/**"
+      - "!dev/docs/**"
   push:
     branches:
       - "main"
     paths:
       - "dev/**"
-      - "!dev/**"
+      - "!dev/docs/**"
 jobs:
   deploy_plan:
     runs-on: ubuntu-22.04
